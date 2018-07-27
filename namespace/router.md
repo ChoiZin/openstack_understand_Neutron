@@ -38,7 +38,7 @@ default via 9.186.100.1 dev qg-e76de35e-90
 9.186.100.0/24 dev qg-e76de35e-90  proto kernel  scope link  src 9.186.100.2
 10.0.0.0/24 dev qr-694450d6-f6  proto kernel  scope link  src 10.0.0.1
 ```
-默认情况，以及访问外部网络的时候，休会从 qg-xxx 接口发出，经过 br-ex 发布到外网。
+默认情况，以及访问外部网络的时候，就会从 qg-xxx 接口发出，经过 br-ex 发布到外网。
 
 访问租户内网的时候，会从 qr-xxx 接口发出，发给 br-int。
 
