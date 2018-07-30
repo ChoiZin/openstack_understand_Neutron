@@ -41,4 +41,4 @@ num   pkts bytes target     prot opt in     out     source               destina
 1     4284 1537K RETURN     all  --  *      *       192.168.0.2          0.0.0.0/0           MAC FA:16:3E:9C:DC:3A
 2        0     0 DROP       all  --  *      *       0.0.0.0/0            0.0.0.0/0
 ```
-这条chain主要检查从vm发出来的网包，是否是openstack所分配的IP和MAC，如果不匹配，则禁止通过。这将防止利用vm上进行一些伪装地址的攻击。
+这条chain主要检查从vm发出来的网包，是否是openstack所分配的IP和MAC，如果不匹配，则禁止通过。这将防止利用vm进行一些伪装地址的攻击。
