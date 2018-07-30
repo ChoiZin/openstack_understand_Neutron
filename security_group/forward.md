@@ -25,7 +25,7 @@ num   pkts bytes target     prot opt in     out     source               destina
 2     8156 2729K neutron-openvswi-o583c7038-d  all  --  *      *       0.0.0.0/0            0.0.0.0/0           PHYSDEV match --physdev-in tap583c7038-d3 --physdev-is-bridged
 3    12442 4163K ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0
 ```
-如果是网桥从tap-XXX端口发出到VM的流量，则跳转到neutron-openvswi-i9LETTERID；如果是从tap-XXX端口进入到网桥的（即vm发出来的）流量，则跳转到neutron-openvswi-o9LETTERID。
+如果是网桥从tap-XXX端口发出到VM的流量，则跳转到neutron-openvswi-i583c7038-d；如果是从tap-XXX端口进入到网桥的（即vm发出来的）流量，则跳转到neutron-openvswi-o583c7038-d。
 ```sh
 #iptables --line-numbers -vnL neutron-openvswi-i583c7038-d
 Chain neutron-openvswi-i583c7038-d (1 references)
@@ -37,7 +37,7 @@ num   pkts bytes target     prot opt in     out     source               destina
 5     3885 1391K RETURN     udp  --  *      *       192.168.0.3          0.0.0.0/0           udp spt:67 dpt:68
 6     3885 1197K neutron-openvswi-sg-fallback  all  --  *      *       0.0.0.0/0            0.0.0.0/0
 ```
-neutron-openvswi-i9LETTERID允许安全组中配置的策略（允许ssh、ping等）和dhcp reply通过。默认的neutron-openvswi-sg-fallback将drop所有流量。
+neutron-openvswi-i583c7038-d允许安全组中配置的策略（允许ssh、ping等）和dhcp reply通过。默认的neutron-openvswi-sg-fallback将drop所有流量。
 ```sh
 #iptables --line-numbers -vnL neutron-openvswi-o583c7038-d
 Chain neutron-openvswi-o583c7038-d (2 references)
@@ -50,4 +50,4 @@ num   pkts bytes target     prot opt in     out     source               destina
 6      311 25752 RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0
 7        0     0 neutron-openvswi-sg-fallback  all  --  *      *       0.0.0.0/0            0.0.0.0/0
 ```
-neutron-openvswi-o9LETTERID将跳转到neutron-openvswi-s583c7038-d，允许DHCP Request和匹配VM的源IP和源MAC的流量通过。
+neutron-openvswi-o583c7038-d将跳转到neutron-openvswi-s583c7038-d，允许DHCP Request和匹配VM的源IP和源MAC的流量通过。
